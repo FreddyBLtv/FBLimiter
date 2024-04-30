@@ -17,7 +17,7 @@
 * Clone the repository or download the script to your local machine.
 
 ```sh
-git clone https://github.com/FreddyBLtv/FBLimiter.git
+git clone https://github.com/FreddyBLtv/FBLimiter_On_Steam_Deck.git
 ```
 * Navigate into the cloned repository.
 
