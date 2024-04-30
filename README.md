@@ -58,6 +58,6 @@ sudo chmod +x uninstall.sh
 * Run the uninstall script.
 
 ```sh
-sudo ./uninstall.sh
+./uninstall.sh
 ```
 * Manually delete all the profile shortcuts on Steam
