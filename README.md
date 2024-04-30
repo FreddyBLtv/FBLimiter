@@ -48,7 +48,7 @@ sudo chmod +x install.sh
 * Open a terminal and navigate into the cloned repository.
 
 ```sh
-cd /home/deck/FBLimiter
+cd /home/deck/FBLimiter_On_Steam_Deck
 ```
 * Run the uninstall script.
 
