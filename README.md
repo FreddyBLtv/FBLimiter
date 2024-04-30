@@ -24,7 +24,7 @@ git clone https://github.com/FreddyBLtv/FBLimiter_On_Steam_Deck.git
 ```sh
 cd FBLimiter_On_Steam_Deck
 ```
-* Make the installation script executable.
+* Make the script executable.
 
 ```sh
 sudo chmod +x install.sh
@@ -49,6 +49,11 @@ sudo chmod +x install.sh
 
 ```sh
 cd /home/deck/FBLimiter_On_Steam_Deck
+```
+* Make the script executable.
+
+```sh
+sudo chmod +x uninstall.sh
 ```
 * Run the uninstall script.
 
