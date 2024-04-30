@@ -55,3 +55,4 @@ cd /home/deck/FBLimiter
 ```sh
 sudo ./uninstall.sh
 ```
+* Manually delete all the profile shortcuts on Steam
