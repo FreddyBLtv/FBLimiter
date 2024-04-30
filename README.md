@@ -39,7 +39,7 @@ sudo chmod +x install.sh
 	Usage
 </h1>
 
-* After running the installation script, follow the prompts, input your password, then select how many profiles you want from a range of 1-3, input the battery limit percentage for each profile, then wait for the "FBLimiter has been installed successfully!' message before closing the terminal. Your battery profiles should be available in Steam. Switch to game mode, then navigate to non-Steam games in your library and launch the profile.
+* After running the installation script, follow the prompts, input your password, then select how many profiles you want from a range of 1-3, input the battery limit percentage from a range of 1-100 for each profile, then wait for the "FBLimiter has been installed successfully!' message before closing the terminal. Your battery profiles should be available in Steam. Switch to game mode, then navigate to non-Steam games in your library and launch the profile.
 
 <h1 align="left">
 	Uninstall
