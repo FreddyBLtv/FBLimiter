@@ -2,10 +2,10 @@
 <h1 align="center">FBLimiter</h1>
 <div align="center">
 
-**A shell script that automates the setup of battery limit profiles on a Steam Deck device, providing users with greater control over their device's power consumption and battery life.**
+**A shell script that automates the setup of battery limit profiles on the Steam Deck, providing users with greater control over their device's power consumption and battery life.**
 
 [![Main](https://img.shields.io/badge/Maintainer-FreddyBLtv-green?style=flat-square)](https://github.com/FreddyBLtv)
-![Main](https://img.shields.io/badge/OS-Linux-blue?style=flat-square)
+![Main](https://img.shields.io/badge/OS-SteamOS-blue?style=flat-square)
 
 </div>
 
