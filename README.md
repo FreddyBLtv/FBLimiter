@@ -12,6 +12,7 @@
 <h1 align="left">
 	Installation
 </h1>
+
 * Switch to Desktop Mode
 * Open a terminal.
 * Clone the repository or download the script to your local machine.
