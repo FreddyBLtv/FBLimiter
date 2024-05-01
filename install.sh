@@ -1,90 +1,38 @@
 #!/bin/bash
 
-# Specify the directory where the scripts will be placed
-mkdir -p "/home/deck/FBLimiter"
-SCRIPTS_DIR="/home/deck/FBLimiter"
+overwrite_prompt=false
 
-# Prompt the user for their password
-read -s -p "Enter your password: " PASSWORD
-echo
-
-# Prompt the user to select the number of profiles
-read -p "Enter the number of profiles (1-3): " NUM_PROFILES
-
-# Check if the number of profiles is valid
-if [ "$NUM_PROFILES" -lt 1 ] || [ "$NUM_PROFILES" -gt 3 ]; then
-    echo "Error: Number of profiles must be between 1 and 3."
-    exit 1
+# Check if the script already exists in the target location
+if [ -e ~/Documents/FBlimiter/FBLimiter.sh ]; then
+    overwrite_prompt=true
 fi
 
-# Create arrays to store battery limits and script filenames
-declare -a BATTERY_LIMITS
-declare -a SCRIPT_FILENAMES
+# Check if a symlink already exists on the desktop
+if [ -L ~/Desktop/FBLimiter ]; then
+    overwrite_prompt=true
+fi
 
-# Loop through each profile to prompt the user for battery limit
-for ((i = 1; i <= NUM_PROFILES; i++)); do
-    read -p "Enter the battery limit percentage for profile $i (1-100): " BATTERY_LIMIT
-    BATTERY_LIMITS+=("$BATTERY_LIMIT")
+# If either file exists, prompt the user to confirm overwriting
+if $overwrite_prompt; then
+    zenity --question --text="FBLimiter is already installed. Do you want to reinstall?"
+    response=$?
+    if [ $response != 0 ]; then
+        zenity --info --text="Installation aborted."
+        exit 1
+    fi
+fi
 
-    # Write the script for the profile
-    cat > "$SCRIPTS_DIR/fblimiter_profile_$i.sh" <<EOF
-#!/bin/bash
+# Create the directory structure
+mkdir -p ~/Documents/FBlimiter
 
-# Define the password
-PASSWORD="$PASSWORD"
+# Move the script to the desired location
+cp FBLimiter.sh ~/Documents/FBlimiter
 
-# Define the battery limit percentage
-BATTERY_LIMIT=$BATTERY_LIMIT
+# Make the script executable
+chmod +x ~/Documents/FBlimiter/FBLimiter.sh
 
-# Run the command with the password
-command_to_run_with_password() {
-    echo "\$PASSWORD" | sudo -S bash -c 'echo '\$BATTERY_LIMIT' > /sys/class/hwmon/hwmon3/max_battery_charge_level'
-}
+# Create a symbolic link on the desktop
+ln -sf ~/Documents/FBlimiter/FBLimiter.sh ~/Desktop/FBLimiter
 
-# Call the function to run the command
-command_to_run_with_password
-
-zenity --info --text "Battery Limit set to $BATTERY_LIMIT%" --width 300 2>/dev/null
-EOF
-
-    # Set executable permissions for the script
-    chmod +x "$SCRIPTS_DIR/fblimiter_profile_$i.sh"
-
-    # Add the script filename to the array
-    SCRIPT_FILENAMES+=("$SCRIPTS_DIR/fblimiter_profile_$i.sh")
-done
-
-# Write the script to disable the limiter
-cat > "$SCRIPTS_DIR/fblimiter_disable.sh" <<EOF
-#!/bin/bash
-
-# Define the password
-PASSWORD="$PASSWORD"
-
-# Run the command with the password
-command_to_run_with_password() {
-    echo "\$PASSWORD" | sudo -S bash -c 'echo 0 > /sys/class/hwmon/hwmon3/max_battery_charge_level'
-}
-
-# Call the function to run the command
-command_to_run_with_password
-
-zenity --info --text "Battery Limit OFF" --width 300 2>/dev/null
-EOF
-
-# Set executable permissions for the limiter disable script
-chmod +x "$SCRIPTS_DIR/fblimiter_disable.sh"
-
-# Add the limiter disable script to the array
-SCRIPT_FILENAMES+=("$SCRIPTS_DIR/fblimiter_disable.sh")
-
-# Run steamos-add-to-steam to add all scripts to Steam Deck
-for script in "${SCRIPT_FILENAMES[@]}"; do
-    chmod +x "$script" # Set executable permissions for each profile script
-    steamos-add-to-steam "$script"
-    sleep 7  # Add a 7-second pause
-done
-
-echo "FBLimiter has been installed successfully!"
-
-exit
+# Display a notification using Zenity
+zenity --notification --text="FBLimiter has been installed successfully"
