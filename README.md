@@ -42,7 +42,7 @@ sudo chmod +x install.sh
 
 * After running the installation script, go to your Desktop and run FBLimiter ((click execute)). Follow the prompts, input your password, then select how many profiles you want from a range of 1-3. Input the battery limit percentage from a range of 1-100 for each profile, then wait for the "FBLimiter has been installed successfully!" message before closing the terminal. Your battery profiles should be available in Steam. Switch to game mode, then navigate to non-Steam games in your library and launch the profile.
 
-* DISCLAIMER! Only launch the limiter when your battery is below the desired limit.
+* DISCLAIMER!!! Only launch the limiter when your battery is below the desired limit.
 
 <!--  
 <h1 align="left">
