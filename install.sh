@@ -3,7 +3,7 @@
 overwrite_prompt=false
 
 # Check if the script already exists in the target location
-if [ -e ~/Documents/FBlimiter/FBLimiter.sh ]; then
+if [ -e ~/FBLimiter/FBLimiter.sh ]; then
     overwrite_prompt=true
 fi
 
@@ -23,16 +23,16 @@ if $overwrite_prompt; then
 fi
 
 # Create the directory structure
-mkdir -p ~/Documents/FBlimiter
+mkdir -p ~/FBLimiter
 
 # Move the script to the desired location
-cp FBLimiter.sh ~/Documents/FBlimiter
+cp FBLimiter.sh ~/FBLimiter
 
 # Make the script executable
-chmod +x ~/Documents/FBlimiter/FBLimiter.sh
+chmod +x ~/FBLimiter/FBLimiter.sh
 
 # Create a symbolic link on the desktop
-ln -sf ~/Documents/FBlimiter/FBLimiter.sh ~/Desktop/FBLimiter
+ln -sf ~/FBLimiter/FBLimiter.sh ~/Desktop/FBLimiter
 
 # Display a notification using Zenity
 zenity --notification --text="FBLimiter has been installed successfully"
