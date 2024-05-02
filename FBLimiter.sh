@@ -15,7 +15,7 @@ check_existing_profiles() {
 # Function to install the script
 install_script() {
     # Specify the directory where the scripts will be placed
-    local SCRIPTS_DIR="/home/deck/FBLimiter"
+    local SCRIPTS_DIR="/home/deck/FBLimiter/Profiles"
 
     # Check if the directory exists, otherwise create it
     if [ ! -d "$SCRIPTS_DIR" ]; then
@@ -137,8 +137,7 @@ uninstall_script() {
 
     # Remove the scripts directory and its contents
     rm -rf "$SCRIPTS_DIR"
-    rm -rf ~/Documents/FBlimiter
-    rm /home/deck/Desktop/FBLimiter
+    rm ~/Desktop/FBLimiter
 
     zenity --info --title="Uninstallation Complete" --text="FBLimiter uninstalled successfully!" --width=300
 }
